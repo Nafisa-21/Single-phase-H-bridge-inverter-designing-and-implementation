@@ -26,34 +26,70 @@ The design integrates various components such as optocouplers, MOSFETs, and a dr
 
 ---
 
-## Circuit Diagram
-<h1 align="center">
-   <img src="path/to/circuit_diagram.png" width="800" height="400" />
-</h1>
-
----
-
 ## Experimental Setup
+<h1 align="center">
+   <img src="1.png" width="800" height="400" />
+</h1>
 ### Equipment and Setup Overview
 1. **PCB Switches**  
    <h1 align="center">
-      <img src="path/to/pcb_switch.png" width="800" height="400" />
+      <img src="2.png" width="800" height="400" />
    </h1>
 
 2. **Transformer Boxes as Power Sources**  
    <h1 align="center">
-      <img src="path/to/transformer_boxes.png" width="800" height="400" />
+      <img src="3.png" width="800" height="400" />
    </h1>
 
 3. **PCB After Soldering**  
    <h1 align="center">
-      <img src="path/to/pcb_soldered.png" width="800" height="400" />
+      <img src="4.png" width="800" height="400" />
    </h1>
 
 4. **Connection of PCB**  
    <h1 align="center">
-      <img src="path/to/pcb_connection.png" width="800" height="400" />
+      <img src="5.png" width="800" height="400" />
    </h1>
+
+---
+
+## Arduino Code:
+```c
+int ang = 0;
+int d = 10;
+
+void setup() {
+    pinMode(10, OUTPUT); // Timer 2
+    pinMode(9, OUTPUT);  // Timer 2
+    TCCR2A = B10110001;
+    TCCR2B = B00000101;
+    TIMSK2 = B00000001;
+}
+
+ISR(TIMER2_OVF_vect) {
+    int duty = (255 * sin(ang * 3.1416 / 180) + 255) / 2;
+    OCR2A = duty;
+    if (duty == 0) {
+        d = 0;
+    } else {
+        d = 10;
+    }
+    int y = duty + d;
+    if (y >= 255) {
+        y = 255;
+    } else {
+        y = y;
+    }
+    OCR2B = y;
+    ang = ang + 5;
+    if (ang > 360) {
+        ang = 0;
+    }
+}
+
+void loop() {
+}
+```
 
 ---
 
@@ -75,7 +111,7 @@ The design integrates various components such as optocouplers, MOSFETs, and a dr
 ## Output
 - **Signal Across Induction Motor (Running Condition)**  
   <h1 align="center">
-     <img src="path/to/output_signal.png" width="800" height="400" />
+     <img src="6.png" width="800" height="400" />
   </h1>
 
 ---
