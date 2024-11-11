@@ -27,10 +27,13 @@ The design integrates various components such as optocouplers, MOSFETs, and a dr
 ---
 
 ## Experimental Setup
+
 <h1 align="center">
    <img src="1.png" width="800" height="400" />
 </h1>
+
 ### Equipment and Setup Overview
+
 1. **PCB Switches**  
    <h1 align="center">
       <img src="2.png" width="800" height="400" />
