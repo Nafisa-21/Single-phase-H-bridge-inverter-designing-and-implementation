@@ -123,9 +123,8 @@ void loop() {
 - **Peak-to-Peak Voltage:** 90V  
 - **RMS Voltage:** 31V  
 - **Frequency Calculation:**  
-  \[
-  f = \frac{1}{T} = \frac{1}{324 \text{ ms}} = 3.086 \text{ Hz}
-  \]
+   $$f = \frac{1}{T} = \frac{1}{324 \text{ ms}} = 3.086 \text{ Hz}$$
+
 
 ---
 
